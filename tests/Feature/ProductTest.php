@@ -52,4 +52,28 @@ class ProductTest extends TestCase
             ->assertUnprocessable()
             ->assertJsonValidationErrors(['name']);
     }
+
+    public function test_delete_product()
+    {
+        $this->deleteJson(route('products.destroy', $this->product->id))
+            ->assertNoContent();
+
+        $this->assertDatabaseMissing('products', ['name' => $this->product->name]);
+    }
+
+    public function test_update_product()
+    {
+        $this->patchJson(route('products.update', $this->product->id), ['name' => 'updated name'])
+            ->assertOk();
+
+        $this->assertDatabaseHas('products', ['id' => $this->product->id, 'name' => 'updated name']);
+    }
+
+    public function test_while_updating_product_name_field_is_required()
+    {
+        $this->withExceptionHandling();
+        $this->patchJson(route('products.update', $this->product->id))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['name']);
+    }
 }

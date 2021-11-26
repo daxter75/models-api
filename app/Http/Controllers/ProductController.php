@@ -26,4 +26,17 @@ class ProductController extends Controller
         ]);
         return response(Product::create($request->all()), Response::HTTP_CREATED);
     }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return response('', Response::HTTP_NO_CONTENT);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $request->validate(['name' => ['required']]);
+        $product->update($request->all());
+        return response($product);
+    }
 }
