@@ -17,7 +17,7 @@ class ProductTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-        $this->product = Product::factory()->create();
+        $this->product = $this->createProduct(['name' => 'my product']);
     }
 
     public function test_fetch_all_products()

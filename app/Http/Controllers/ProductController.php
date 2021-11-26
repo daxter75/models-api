@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,11 +20,8 @@ class ProductController extends Controller
         return response($product);
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $request->validate([
-            'name' => ['required']
-        ]);
         return response(Product::create($request->all()), Response::HTTP_CREATED);
     }
 
@@ -33,9 +31,8 @@ class ProductController extends Controller
         return response('', Response::HTTP_NO_CONTENT);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $request->validate(['name' => ['required']]);
         $product->update($request->all());
         return response($product);
     }
