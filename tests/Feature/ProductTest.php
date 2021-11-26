@@ -44,4 +44,12 @@ class ProductTest extends TestCase
         $this->assertEquals($product->name, $response['name']);
         $this->assertDatabaseHas('products', ['name' => $product->name]);
     }
+
+    public function test_while_storing_product_name_field_is_required()
+    {
+        $this->withExceptionHandling();
+        $this->postJson(route('products.store'))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['name']);
+    }
 }
