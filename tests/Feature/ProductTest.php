@@ -39,7 +39,26 @@ class ProductTest extends TestCase
     public function test_store_new_product()
     {
         $product = Product::factory()->make();
-        $response = $this->postJson(route('products.store'), ['name' => $product->name])->assertCreated()->json();
+        $response = $this
+            ->postJson(route('products.store'), [
+                'brand_id' => $product->brand_id,
+                'name' => $product->name,
+                'product_no' => $product->product_no,
+                'scale' => $product->scale,
+                'age' => $product->age,
+                'level' => $product->level,
+                'no_parts' => $product->no_parts,
+                'length' => $product->length,
+                'width' => $product->width,
+                'height' => $product->height,
+                'wingspan' => $product->wingspan,
+                'url' => $product->url,
+                'purchased_at' => $product->purchased_at,
+                'finished_at' => $product->finished_at,
+                'author_id' => $product->author_id,
+            ])
+            ->assertCreated()
+            ->json();
 
         $this->assertEquals($product->name, $response['name']);
         $this->assertDatabaseHas('products', ['name' => $product->name]);

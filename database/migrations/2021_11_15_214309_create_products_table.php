@@ -15,7 +15,21 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('brand_id');
             $table->string('name');
+            $table->string('product_no');
+            $table->string('scale', 10);
+            $table->unsignedTinyInteger('age');
+            $table->unsignedTinyInteger('level');
+            $table->unsignedSmallInteger('no_parts');
+            $table->unsignedSmallInteger('length');
+            $table->unsignedSmallInteger('width');
+            $table->unsignedSmallInteger('height');
+            $table->unsignedSmallInteger('wingspan');
+            $table->string('url', );
+            $table->date('purchased_at');
+            $table->date('finished_at');
+            $table->unsignedBigInteger('author_id');
             $table->timestamps();
         });
     }
