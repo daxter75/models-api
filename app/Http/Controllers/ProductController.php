@@ -36,4 +36,9 @@ class ProductController extends Controller
         $product->update($request->all());
         return response($product);
     }
+
+    public function search($name)
+    {
+        return Product::where('name', 'like', '%' . $name . '%')->get();
+    }
 }
