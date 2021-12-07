@@ -14,7 +14,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'brand_id' => $this->faker->numberBetween(1, 100),
+            'brand_id' => $this->faker->numberBetween(1, 10),
             'name' => $this->faker->sentence(4),
             'product_no' => $this->faker->word(),
             'scale' => '1:' . $this->faker->numberBetween(1, 3000),
@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'url' => $this->faker->url(),
             'purchased_at' => $this->faker->date('Y-m-d', 'now'),
             'finished_at' => $this->faker->date('Y-m-d', 'now'),
-            'author_id' => $this->faker->numberBetween(1, 100),
+            'author_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

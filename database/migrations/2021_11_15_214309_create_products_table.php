@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->unsignedSmallInteger('width');
             $table->unsignedSmallInteger('height');
             $table->unsignedSmallInteger('wingspan');
-            $table->string('url', );
+            $table->string('url');
             $table->date('purchased_at');
             $table->date('finished_at');
             $table->unsignedBigInteger('author_id');
