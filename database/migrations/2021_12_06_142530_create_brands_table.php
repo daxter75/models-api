@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

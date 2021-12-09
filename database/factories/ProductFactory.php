@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'url' => $this->faker->url(),
             'purchased_at' => $this->faker->date('Y-m-d', 'now'),
             'finished_at' => $this->faker->date('Y-m-d', 'now'),
-            'author_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

@@ -11,12 +11,12 @@ class BrandFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->sentence(2),
             'url' => $this->faker->url(),
-            'author_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

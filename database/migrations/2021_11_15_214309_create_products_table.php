@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('url');
             $table->date('purchased_at');
             $table->date('finished_at');
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

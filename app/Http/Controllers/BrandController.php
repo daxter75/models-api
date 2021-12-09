@@ -15,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
+        $brands = request()->user()->brands;
         return response($brands);
     }
 

@@ -25,8 +25,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'brand_id' => ['required'],
-            'name' => ['required|string'],
-            'author_id' => ['required']
+            'name' => ['required'],
+            'user_id' => ['required']
         ];
     }
 }

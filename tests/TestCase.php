@@ -18,6 +18,7 @@ abstract class TestCase extends BaseTestCase
 
     public function createProduct($args = [])
     {
+        $this->createBrand(['name' => 'Revell', 'user_id' => 1]);
         return Product::factory()->create($args);
     }
 
