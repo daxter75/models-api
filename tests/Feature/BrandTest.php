@@ -59,4 +59,28 @@ class BrandTest extends TestCase
         $this->assertDatabaseHas('brands', ['name' => $brand->name]);
     }
 
+    public function test_update_brand()
+    {
+        Sanctum::actingAs(User::factory()->create(),['*']);
+        $this->
+        patchJson(
+            route('brands.update', $this->brand->id),
+            [
+                'name' => 'updated name',
+                'user_id' => $this->brand->user_id
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('brands', ['id' => $this->brand->id, 'name' => 'updated name']);
+    }
+
+    public function test_delete_brand()
+    {
+        Sanctum::actingAs(User::factory()->create(),['*']);
+        $this->deleteJson(route('brands.destroy', $this->brand->id))
+            ->assertNoContent();
+
+        $this->assertDatabaseMissing('brands', ['name' => $this->brand->name]);
+    }
+
 }
